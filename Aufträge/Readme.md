@@ -21,5 +21,5 @@ Mit einem [dockerfile](04_2%20dockerfile%20datenbank/Readme.md) erstellen Sie ei
 ### Datenbank Fortgeschritten
 Mit einem [dockerfile](04_2%20dockerfile%20datenbank%20Fortgeschrittene/Readme.md) erstellen Sie einen Datenbank-Container.
 
-### Phyton webserver
-Mit einem [dockerfile](04_3%20dockerfile%20phyton%20webserver/Readme.md) erstellen Sie einen phyton webserver Container.
+### Python webserver
+Mit einem [dockerfile](04_3%20dockerfile%20python%20webserver/Readme.md) erstellen Sie einen python webserver Container.
