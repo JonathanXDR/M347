@@ -1,6 +1,6 @@
 <script>
 import { createVNode } from 'vue'
-import iconsData from '@primer/octicons/build/build/data.json'
+import iconsData from '@primer/octicons/build/data.json'
 
 export default {
   name: 'OctIcon',
