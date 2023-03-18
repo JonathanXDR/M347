@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import OctIcon from 'vue-octicon/components/Octicon.vue'
+import OctIcon from '@/components/Icons/OctIcon.vue'
 
-import 'vue-octicon/icons'
+import '@primer/octicons'
 import '@primer/css/index.scss'
 
 const app = createApp(App)

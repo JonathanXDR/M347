@@ -1,7 +1,5 @@
 <template>
-  <main>
-    <h1>Hallo</h1>
-  </main>
+  <h1>Hallo</h1>
 </template>
 
 <script lang="ts" src="./HomeView.ts"></script>
