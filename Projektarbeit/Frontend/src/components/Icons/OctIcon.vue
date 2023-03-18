@@ -1,8 +1,5 @@
-<template>
-  <div v-html="iconSVG" />
-</template>
-
 <script>
+import { createVNode } from 'vue'
 import iconsData from '@primer/octicons/build/build/data.json'
 
 export default {
@@ -14,7 +11,7 @@ export default {
     },
     size: {
       type: Number,
-      default: 12,
+      default: 16,
       validator(value) {
         return [12, 16, 24].includes(value)
       }
@@ -36,7 +33,16 @@ export default {
       const customWidth = this.width ? this.width : iconSizeData.width
       const customHeight = this.height ? this.height : this.size
 
-      return `<svg xmlns="http://www.w3.org/2000/svg" width="${customWidth}" height="${customHeight}" viewBox="${viewBox}">${iconSizeData.path}</svg>`
+      return {
+        tag: 'svg',
+        attrs: {
+          width: customWidth,
+          height: customHeight,
+          viewBox: viewBox,
+          class: `octicon octicon-${this.name}`,
+          innerHTML: iconSizeData.path
+        }
+      }
     }
   },
   watch: {
@@ -53,19 +59,15 @@ export default {
         throw new Error(`The icon "${this.name}" does not exist.`)
       }
       if (!this.iconData.heights[this.size]) {
-        throw new Error(`The icon "${this.name}" with the size "${this.size}" is not available.`)
+        throw new Error(`The size "${this.size}" does not exist for the icon "${this.name}".`)
       }
     }
   },
   mounted() {
     this.checkIconAvailability()
+  },
+  render() {
+    return createVNode(this.iconSVG.tag, this.iconSVG.attrs)
   }
 }
 </script>
-
-<style scoped>
-div {
-  display: inline-block;
-  vertical-align: middle;
-}
-</style>
