@@ -1,5 +1,7 @@
+import type SideBar from '@/components/SideBar/SideBar';
+
 <template>
-  <h1>Hallo</h1>
+  <SideBar />
 </template>
 
 <script lang="ts" src="./HomeView.ts"></script>
