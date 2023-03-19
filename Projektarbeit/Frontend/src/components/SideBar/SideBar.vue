@@ -5,18 +5,15 @@
     <div class="dashboard-sidebar top-0 px-3 px-md-4 px-lg-5 overflow-auto">
       <loading-context class="loading-context position-relative height-full">
         <div class="d-flex flex-column flex-justify-between">
-          <div class="mb-4 Details js-repos-container mt-5">
-            <div class="width-full d-flex mt-2">
-              <a
-                class="mr-2 d-flex flex-items-center"
-                href="/JonathanXDR/Application-Website-Frontend"
-              >
+          <div class="mb-4 Details js-repos-container mt-5 ml-2">
+            <div class="width-full d-flex flex-wrap mt-2">
+              <a class="mr-2 d-flex flex-items-center" href="/JonathanXDR">
                 <img
                   src="https://github.com/jonathanxdr.png?v=3&s=128"
-                  class="avatar avatar-6 circle"
+                  class="avatar avatar-6 circle mb-2"
                   width="40"
                   height="40"
-                  alt="Application-Website-Frontend"
+                  alt="JonathanXDR"
                 />
               </a>
               <h2>Jonathan Russ</h2>

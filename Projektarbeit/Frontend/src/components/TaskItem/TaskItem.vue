@@ -1,14 +1,19 @@
 <template>
-  <div class="Box">
-    <div class="Box-row d-flex flex-items-center">
-      <input type="checkbox" class="mr-3" />
-      <div class="flex-auto">
-        <strong>Task</strong>
-        <div class="text-small color-fg-subtle">Description</div>
-      </div>
-      <button type="button" class="btn btn-primary" name="button">View</button>
-    </div>
-  </div>
+  <ul v-for="(task, index) in tasks" :key="index">
+    <li class="Box p mb-2">
+      <router-link
+        class="Box-row d-flex flex-items-center no-underline color-fg-default"
+        :to="`/task/${task.id}`"
+      >
+        <input type="checkbox" class="mr-3" :checked="task.completed" />
+        <div class="flex-auto">
+          <strong>{{ task.title }}</strong>
+          <div class="text-small color-fg-subtle">{{ task.description }}</div>
+        </div>
+        <button type="button" class="btn btn-primary" name="button">View</button>
+      </router-link>
+    </li>
+  </ul>
 </template>
 
 <script lang="ts" src="./TaskItem.ts"></script>

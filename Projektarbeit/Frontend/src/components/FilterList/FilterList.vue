@@ -1,30 +1,11 @@
 <template>
   <ul class="filter-list">
-    <li>
-      <a class="filter-item" href="#url">
-        <OctIcon name="bookmark" class="mr-2" />
-        Templates
+    <li v-for="(action, index) in actions" :key="index">
+      <router-link class="filter-item" :to="action.path">
+        <OctIcon :name="action.icon" class="mr-2" />
+        {{ action.title }}
         <!-- <span class="count">21</span> -->
-      </a>
-    </li>
-    <li>
-      <a class="filter-item" href="#url" aria-current="page">
-        <OctIcon name="apps" class="mr-2" />
-        Categories
-        <!-- <span class="count">3</span> -->
-      </a>
-    </li>
-    <li>
-      <a class="filter-item" href="#url">
-        <OctIcon name="graph" class="mr-2" />
-        Analytics
-      </a>
-    </li>
-    <li>
-      <a class="filter-item" href="#url">
-        <OctIcon name="gear" class="mr-2" />
-        Settings
-      </a>
+      </router-link>
     </li>
   </ul>
 </template>

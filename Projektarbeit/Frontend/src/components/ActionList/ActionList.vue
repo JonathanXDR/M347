@@ -1,35 +1,11 @@
 <template>
   <ul class="ActionList">
-    <li class="ActionList-item">
+    <li class="ActionList-item" v-for="(action, index) in actions" :key="index">
       <span class="ActionList-content">
-        <a class="ActionList-item-label no-underline">
-          <OctIcon name="bookmark" class="mr-2" />
-          Templates
-        </a>
-      </span>
-    </li>
-    <li class="ActionList-item ActionList-item--navActive">
-      <span class="ActionList-content">
-        <a class="ActionList-item-label no-underline">
-          <OctIcon name="apps" class="mr-2" />
-          Categories
-        </a>
-      </span>
-    </li>
-    <li class="ActionList-item">
-      <span class="ActionList-content">
-        <a class="ActionList-item-label no-underline">
-          <OctIcon name="graph" class="mr-2" />
-          Analytics
-        </a>
-      </span>
-    </li>
-    <li class="ActionList-item">
-      <span class="ActionList-content">
-        <a class="ActionList-item-label no-underline">
-          <OctIcon name="gear" class="mr-2" />
-          Settings
-        </a>
+        <router-link class="ActionList-item-label no-underline" :to="action.path">
+          <OctIcon :name="action.icon" class="mr-2" />
+          {{ action.title }}
+        </router-link>
       </span>
     </li>
   </ul>

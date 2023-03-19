@@ -4,6 +4,29 @@ export default defineComponent({
   name: 'ActionList',
   components: {},
   data() {
-    return {}
+    return {
+      actions: [
+        {
+          title: 'Template',
+          icon: 'bookmark',
+          path: '/template'
+        },
+        {
+          title: 'Categories',
+          icon: 'apps',
+          path: '/categories'
+        },
+        {
+          title: 'Analytics',
+          icon: 'graph',
+          path: '/analytics'
+        },
+        {
+          title: 'Settings',
+          icon: 'gear',
+          path: '/settings'
+        }
+      ]
+    }
   }
 })

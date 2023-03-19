@@ -1,0 +1,194 @@
+/*! CSS Used from: https://github.githubassets.com/assets/global-d0de0b81e2dd.css ; media=all */
+/* @media all {
+  [data-catalyst] {
+    display: block;
+  }
+  .header-search-button {
+    display: table-cell;
+    overflow: hidden;
+    font-size: inherit;
+    color: inherit;
+    word-break: break-word;
+    white-space: pre;
+    background: none;
+  }
+  .header-search-button.input-button:focus {
+    border: 0 !important;
+  }
+  .header-search-button.placeholder {
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .search-input {
+    width: 350px;
+  }
+  @media only screen and (max-width: 768px) {
+    .search-input {
+      width: 100%;
+    }
+    .search-input-container {
+      margin-right: 10px !important;
+      margin-bottom: 10px !important;
+      margin-left: 10px !important;
+    }
+  }
+  .search-with-dialog {
+    height: 32px;
+    color: var(--color-scale-white);
+    background-color: var(--color-header-bg);
+    border: 1px solid var(--color-header-search-border);
+  }
+  .search-with-dialog:hover {
+    background-color: var(--color-header-search-bg);
+  }
+  .search-feedback-prompt {
+    padding-top: var(--base-size-12, 12px);
+    padding-bottom: var(--base-size-12, 12px);
+    border-top-color: var(--color-action-list-item-inline-divider);
+    border-top-style: solid;
+    border-top-width: 1px;
+  }
+  .search-suggestions {
+    top: -14px;
+    left: -14px;
+    z-index: 15;
+    width: calc(100% + 26px) !important;
+    max-height: 80vh;
+    padding-top: var(--base-size-12, 12px);
+    border-radius: var(--primer-borderRadius-large, 12px);
+  }
+  .search-suggestions .suggestion-search-input-wrapper {
+    height: 32px;
+    overflow-x: hidden;
+    border: 1px solid var(--color-accent-fg);
+    box-shadow: 0 0 0 1px var(--color-accent-fg);
+    align-items: center;
+  }
+  .search-suggestions .blackbird-search-button-separator {
+    height: 16px;
+    border-right: 1px solid var(--color-border-default);
+  }
+  .search-suggestions .close-blackbird-search-button {
+    position: relative;
+    display: grid;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    place-content: center;
+  }
+  .search-suggestions .close-blackbird-search-button:hover {
+    background-color: var(--color-canvas-subtle);
+  }
+  .search-suggestions .clear-blackbird-search-button {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .search-suggestions .clear-blackbird-search-button:hover {
+    background-color: var(--color-canvas-subtle);
+  }
+  .search-suggestions .suggestion-list {
+    list-style: none;
+  }
+  .search-suggestions .octicon {
+    pointer-events: none;
+  }
+  .dark-backdrop {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 32;
+    height: 100%;
+    background-color: var(--color-primer-canvas-backdrop);
+  }
+  .styled-text-input {
+    align-items: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+  }
+  .styled-text-input.text-input-wrapper {
+    display: inline-flex;
+    min-height: 30px;
+    color: var(--color-fg-default);
+    cursor: text;
+    background-color: var(--color-canvas-default);
+    outline: none;
+  }
+  .styled-text-input.text-input-wrapper::placeholder {
+    color: var(--color-fg-subtle);
+  }
+  .styled-text-input.text-input-wrapper .text-input-icon {
+    display: flex;
+    margin-right: 8px;
+    align-self: center;
+    color: var(--color-fg-muted);
+    flex-shrink: 0;
+  }
+  .styled-text-input .styled-content-container {
+    font-size: inherit;
+    align-items: center;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .styled-text-input .styled-content-container::-webkit-scrollbar {
+    display: none;
+  }
+  .styled-text-input .styled-content-container .styled-content {
+    word-break: break-word;
+    white-space: pre;
+  }
+  .autosize-text-input .input {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    color: transparent;
+    resize: none;
+    background: transparent;
+    outline: none;
+    caret-color: var(--color-fg-default);
+  }
+  .autosize-text-input .sizer {
+    height: 0;
+    white-space: pre;
+  }
+  [data-color-mode='dark'][data-dark-theme*='dark'] ::selection {
+    background-color: var(--color-accent-muted);
+  }
+} */
+/*! CSS Used from: https://github.githubassets.com/assets/github-dcaf0f44dbb1.css ; media=all */
+/* @media all {
+  @media print {
+    .btn:not(.btn-outline) {
+      color: var(--color-fg-default) !important;
+      background: none;
+    }
+    p {
+      page-break-inside: avoid;
+    }
+  }
+} */
+/*! CSS Used from: https://github.githubassets.com/assets/github-dcaf0f44dbb1.css ; media=all */
+/* @media all {
+  @media print {
+    .btn:not(.btn-outline) {
+      color: var(--color-fg-default) !important;
+      background: none;
+    }
+    p {
+      page-break-inside: avoid;
+    }
+  }
+} */
+/*! CSS Used keyframes */
+/* @keyframes Overlay--motion-scaleFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+} */

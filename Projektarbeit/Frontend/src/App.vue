@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router'
 import NavBar from '@/components/NavBar/NavBar.vue'
 
 export default {
-  name: 'HomeView',
+  name: 'App',
   components: {
     RouterView,
     NavBar
@@ -21,6 +21,16 @@ export default {
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
 .full-width {
   width: 100%;
 }
