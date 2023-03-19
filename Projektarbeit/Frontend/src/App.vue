@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import NavBar from '@/components/NavBar/NavBar.vue'
 
 export default {
@@ -12,10 +12,20 @@ export default {
 </script>
 
 <template>
-  <header>
+  <header class="Header px-3 px-md-4 px-lg-5">
     <NavBar />
   </header>
-  <main>
+  <main class="full-width full-height">
     <RouterView />
   </main>
 </template>
+
+<style>
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+</style>

@@ -1,7 +1,8 @@
-import type SideBar from '@/components/SideBar/SideBar';
-
 <template>
-  <SideBar />
+  <div class="d-flex full-width full-height">
+    <SideBar />
+    <TaskCategoryList />
+  </div>
 </template>
 
 <script lang="ts" src="./HomeView.ts"></script>

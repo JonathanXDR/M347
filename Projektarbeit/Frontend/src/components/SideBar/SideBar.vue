@@ -1,23 +1,58 @@
 <template>
   <aside
-    data-turbo="false"
-    class="team-left-column col-md-4 col-lg-3 color-border-muted border-bottom hide-md hide-sm border-right color-bg-default"
-    aria-label="Account"
+    class="col-md-4 col-lg-3 team-left-column color-border-muted border-bottom hide-md hide-sm border-right color-bg-default"
   >
     <div class="dashboard-sidebar top-0 px-3 px-md-4 px-lg-5 overflow-auto">
-      <loading-context
-        data-view-component="true"
-        class="loading-context position-relative height-full"
-        data-catalyst=""
-      >
-        <div data-target="loading-context.details">
-          <div
-            class="mb-4 Details js-repos-container mt-5"
-            data-repository-hovercards-enabled=""
-            role="navigation"
-            aria-label="Repositories"
-          >
-            <div class="js-repos-container">
+      <loading-context class="loading-context position-relative height-full">
+        <div class="d-flex flex-column flex-justify-between">
+          <div class="mb-4 Details js-repos-container mt-5">
+            <div class="width-full d-flex mt-2">
+              <a
+                class="mr-2 d-flex flex-items-center"
+                href="/JonathanXDR/Application-Website-Frontend"
+              >
+                <img
+                  src="https://github.com/jonathanxdr.png?v=3&s=128"
+                  class="avatar avatar-6 circle"
+                  width="40"
+                  height="40"
+                  alt="Application-Website-Frontend"
+                />
+              </a>
+              <h2>Jonathan Russ</h2>
+            </div>
+          </div>
+          <div>
+            <ul class="filter-list">
+              <li>
+                <a class="filter-item" href="#url" aria-current="page">
+                  <OctIcon name="bookmark" class="mr-2" />
+                  Templates
+                  <!-- <span class="count">21</span> -->
+                </a>
+              </li>
+              <li>
+                <a class="filter-item" href="#url">
+                  <OctIcon name="apps" class="mr-2" />
+                  Categories
+                  <!-- <span class="count">3</span> -->
+                </a>
+              </li>
+              <li>
+                <a class="filter-item" href="#url">
+                  <OctIcon name="graph" class="mr-2" />
+                  Analytics
+                </a>
+              </li>
+              <li>
+                <a class="filter-item" href="#url">
+                  <OctIcon name="gear" class="mr-2" />
+                  Settings
+                </a>
+              </li>
+            </ul>
+
+            <!-- <div class="js-repos-container">
               <h2 class="f4 hide-sm hide-md mb-1 f5 d-flex flex-justify-between flex-items-center">
                 Top Repositories
                 <a
@@ -296,7 +331,6 @@
                 </li>
               </ul>
 
-              <!-- '"` --><!-- </textarea></xmp> -->
               <form
                 class="ajax-pagination-form js-ajax-pagination js-more-repos-form"
                 data-turbo="false"
@@ -316,7 +350,7 @@
                   Show more
                 </button>
               </form>
-            </div>
+            </div> -->
           </div>
 
           <div>
