@@ -272,7 +272,6 @@
             </div>
           </div>
           <div data-view-component="true" class="Overlay-body">
-            <!-- '"` --><!-- </textarea></xmp> -->
             <form
               id="code-search-feedback-form"
               data-turbo="false"
@@ -368,7 +367,6 @@
             </div>
           </div>
           <div data-view-component="true" class="Overlay-body">
-            <!-- '"` --><!-- </textarea></xmp> -->
             <form
               id="custom-scopes-dialog-form"
               data-turbo="false"

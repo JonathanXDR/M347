@@ -1,6 +1,30 @@
-<script>
+<script lang="ts">
 import { createVNode } from 'vue'
-import iconsData from '@primer/octicons/build/data.json'
+import type { VNode } from 'vue'
+import rawIconsData from '@primer/octicons/build/build/data.json'
+
+interface IconSVG {
+  tag: string
+  attrs: {
+    [key: string]: string | number
+  }
+}
+
+interface IconData {
+  [key: string]: {
+    name: string
+    keywords: string[]
+    heights: {
+      [key: string]: {
+        width: number
+        path: string
+        ast: any
+      }
+    }
+  }
+}
+
+const iconsData: IconData = rawIconsData
 
 export default {
   name: 'OctIcon',
@@ -12,7 +36,7 @@ export default {
     size: {
       type: Number,
       default: 16,
-      validator(value) {
+      validator(value: number): boolean {
         return [12, 16, 24].includes(value)
       }
     },
@@ -20,10 +44,10 @@ export default {
     height: Number
   },
   computed: {
-    iconData() {
+    iconData(): any {
       return iconsData[this.name]
     },
-    iconSVG() {
+    iconSVG(): IconSVG | string {
       if (!this.iconData || !this.iconData.heights[this.size]) {
         return ''
       }
@@ -46,15 +70,11 @@ export default {
     }
   },
   watch: {
-    name(newName, oldName) {
-      this.checkIconAvailability()
-    },
-    size(newSize, oldSize) {
-      this.checkIconAvailability()
-    }
+    name: 'checkIconAvailability',
+    size: 'checkIconAvailability'
   },
   methods: {
-    checkIconAvailability() {
+    checkIconAvailability(): void {
       if (!this.iconData) {
         throw new Error(`The icon "${this.name}" does not exist.`)
       }
@@ -63,10 +83,11 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted(): void {
     this.checkIconAvailability()
   },
-  render() {
+  render(): VNode {
+    if (typeof this.iconSVG === 'string') return createVNode('div')
     return createVNode(this.iconSVG.tag, this.iconSVG.attrs)
   }
 }
