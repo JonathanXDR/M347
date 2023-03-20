@@ -1,7 +1,7 @@
 <script lang="ts">
 import { createVNode } from 'vue'
 import type { VNode } from 'vue'
-import rawIconsData from '@primer/octicons/build/build/data.json'
+import rawIconsData from '@primer/octicons/build/data.json'
 
 interface IconSVG {
   tag: string
