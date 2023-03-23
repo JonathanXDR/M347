@@ -1,12 +1,14 @@
 <script lang="ts">
 import { RouterView } from 'vue-router'
 import NavBar from '@/components/NavBar/NavBar.vue'
+import SpotlightSearch from '@/components/SpotlightSearch/SpotlightSearch.vue'
 
 export default {
   name: 'App',
   components: {
     RouterView,
     NavBar
+    // SpotlightSearch
   }
 }
 </script>
@@ -14,6 +16,7 @@ export default {
 <template>
   <header class="Header px-3 px-md-4 px-lg-5">
     <NavBar />
+    <!-- <SpotlightSearch /> -->
   </header>
   <main class="full-width full-height">
     <RouterView />

@@ -7,6 +7,7 @@
         type="button"
         data-view-component="true"
         class="Header-link js-details-target btn-link"
+        @click="toggleNav"
       >
         <OctIcon name="three-bars" width="24" height="24" />
       </button>

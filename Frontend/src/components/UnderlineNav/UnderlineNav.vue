@@ -136,8 +136,8 @@
             data-view-component="true"
             class="UnderlineNav-item"
           >
-            <OctIcon name="code-square" class="UnderlineNav-octicon" />
-            <span data-view-component="true">All gists</span>
+            <OctIcon name="rows" class="UnderlineNav-octicon" />
+            <span data-view-component="true">All tasks</span>
             <span title="2" data-view-component="true" class="Counter">2</span>
           </a>
         </li>
@@ -146,6 +146,13 @@
             <OctIcon name="star" class="UnderlineNav-octicon" />
             <span data-view-component="true">Starred</span>
             <span title="8" data-view-component="true" class="Counter">8</span>
+          </a>
+        </li>
+        <li data-view-component="true" class="d-inline-flex">
+          <a href="/JonathanXDR/shared" data-view-component="true" class="UnderlineNav-item">
+            <OctIcon name="people" class="UnderlineNav-octicon" />
+            <span data-view-component="true">Shared</span>
+            <span title="8" data-view-component="true" class="Counter">12</span>
           </a>
         </li>
       </ul>
@@ -212,7 +219,7 @@
                 role="button"
               >
                 <i>Sort:</i>
-                <span data-menu-button="">Recently created</span>
+                <span data-menu-button="">Importance</span>
               </summary>
               <details-menu
                 class="select-menu-modal position-absolute right-0"
@@ -231,9 +238,7 @@
                     href="https://gist.github.com/JonathanXDR?direction=desc&amp;sort=created"
                   >
                     <OctIcon name="check" class="select-menu-item-icon" />
-                    <span class="select-menu-item-text" data-menu-button-text=""
-                      >Recently created</span
-                    >
+                    <span class="select-menu-item-text" data-menu-button-text="">Importance</span>
                   </a>
                   <a
                     class="select-menu-item"
@@ -242,9 +247,7 @@
                     href="https://gist.github.com/JonathanXDR?direction=asc&amp;sort=created"
                   >
                     <OctIcon name="check" class="select-menu-item-icon" />
-                    <span class="select-menu-item-text" data-menu-button-text=""
-                      >Least recently created</span
-                    >
+                    <span class="select-menu-item-text" data-menu-button-text="">Due date</span>
                   </a>
                   <a
                     class="select-menu-item"
@@ -254,7 +257,7 @@
                   >
                     <OctIcon name="check" class="select-menu-item-icon" />
                     <span class="select-menu-item-text" data-menu-button-text=""
-                      >Recently updated</span
+                      >Alphabetically</span
                     >
                   </a>
                   <a
@@ -265,7 +268,7 @@
                   >
                     <OctIcon name="check" class="select-menu-item-icon" />
                     <span class="select-menu-item-text" data-menu-button-text=""
-                      >Least recently updated</span
+                      >Creation Date</span
                     >
                   </a>
                 </div>
