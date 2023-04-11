@@ -22,10 +22,10 @@ services:
     depends_on:
       - database
 
-  frontend:
-    container_name: frontend
-    build: ./Frontend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - backend
+  # frontend:
+  #   container_name: frontend
+  #   build: ./Frontend
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - backend
