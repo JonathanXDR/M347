@@ -4,13 +4,12 @@ const mysql = require('mysql');
 
 // create database connection
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: '0.0.0.0',
     user: 'root',
-    password: 'root',
+    password: 'toor',
     database: 'ToDo',
     ssl: false,
     port: 3306
-
 });
 
 // connect to database
@@ -23,6 +22,11 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+
+
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
 
 // HTTP endpoint to get all users from the database
 app.get('/tasks', (req, res) => {
