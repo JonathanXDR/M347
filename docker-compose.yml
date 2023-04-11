@@ -1,14 +1,16 @@
 version: "3"
+name: ToDo
 services:
   frontend:
-    build: ./frontend
+    container_name: frontend
+    build: ./Frontend
     ports:
       - "8080:8080"
     depends_on:
       - db
 
-  # The database runs but the sql script wont get executed
   db:
+    container_name: db
     image: mysql:8.0
     command: --default-authentication-plugin=mysql_native_password
     environment:
@@ -18,4 +20,4 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - "./ToDo-Backend/database/create.sql:/docker-entrypoint-initdb.d/1.sql"
+      - "./Database/create.sql:/docker-entrypoint-initdb.d/1.sql"
