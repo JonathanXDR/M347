@@ -1,5 +1,5 @@
-version: "3"
-name: ToDo
+version: '3'
+name: todo
 services:
   database:
     container_name: database
@@ -10,9 +10,9 @@ services:
       MYSQL_ROOT_PASSWORD: toor
       MYSQL_DATABASE: ToDo
     ports:
-      - "3307:3306"
+      - '3307:3306'
     volumes:
-      - "./Database/create.sql:/docker-entrypoint-initdb.d/1.sql"
+      - './Database/create.sql:/docker-entrypoint-initdb.d/1.sql'
 
   backend:
     build: ./Backend
