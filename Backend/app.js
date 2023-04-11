@@ -28,14 +28,14 @@ app.get("/", (req, res) => {
 
 // HTTP endpoint to get all users from the database
 app.get('/tasks', (req, res) => {
-    db.query('SELECT * FROM tasks', (err, result) => {
+    db.query('SELECT * FROM Tasks', (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 });
 
 app.get('/tasks/:id', (req, res) => {
-    db.query('SELECT * FROM tasks WHERE id = ?', [req.params.id], (err, result) => {
+    db.query('SELECT * FROM Tasks WHERE id = ?', [req.params.id], (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
             res.send(result[0]);
@@ -47,14 +47,14 @@ app.get('/tasks/:id', (req, res) => {
 });
 
 app.get('/categories', (req, res) => {
-    db.query('SELECT * FROM categories', (err, result) => {
+    db.query('SELECT * FROM Categories', (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 });
 
 app.get('/categories/:id', (req, res) => {
-    db.query('SELECT * FROM categories WHERE id = ?', [req.params.id], (err, result) => {
+    db.query('SELECT * FROM Categories WHERE id = ?', [req.params.id], (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
             res.send(result[0]);
@@ -66,7 +66,7 @@ app.get('/categories/:id', (req, res) => {
 });
 
 app.get('/categories/:id/tasks', (req, res) => {
-    db.query('SELECT id, title, description, done FROM tasks WHERE category_id = ?', [req.params.id], (err, result) => {
+    db.query('SELECT id, title, description, done FROM Tasks WHERE category_id = ?', [req.params.id], (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
             res.send(result);
