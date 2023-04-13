@@ -7,7 +7,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_USER: root
-      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: ToDo
     ports:
       - '3307:3306'
@@ -18,14 +18,14 @@ services:
     build: ./Backend
     container_name: backend
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - database
 
-  # frontend:
-  #   container_name: frontend
-  #   build: ./Frontend
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - backend
+  frontend:
+    container_name: frontend
+    build: ./Frontend
+    ports:
+      - '5173:5173'
+    depends_on:
+      - backend

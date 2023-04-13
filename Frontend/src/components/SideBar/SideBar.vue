@@ -1,7 +1,7 @@
 <template>
   <aside
-    class="col-md-4 col-lg-3 team-left-column color-border-muted border-bottom hide-md hide-sm border-right color-bg-default"
-    :class="{ 'd-none': !navOpen }"
+    class="col-md-4 col-lg-3 team-left-column color-border-muted border-bottom border-right color-bg-default"
+    :class="[{ 'd-none': !navOpen }, { 'd-block': navOpen }]"
   >
     <div class="dashboard-sidebar top-0 px-3 px-md-4 px-lg-5 overflow-auto">
       <loading-context class="loading-context position-relative height-full">
