@@ -13,7 +13,7 @@ export default defineComponent({
     return {}
   },
   computed: {
-    currentNavState(): boolean {
+    navOpen(): boolean {
       return useNavStore().navOpen
     }
   }
