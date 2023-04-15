@@ -1,5 +1,4 @@
 version: '3'
-name: todo
 services:
   database:
     container_name: database
@@ -8,11 +7,10 @@ services:
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: ToDo
-    ports:
-      - '3307:3306'
+      MYSQL_DATABASE: todo
     volumes:
-      - './Database/create.sql:/docker-entrypoint-initdb.d/1.sql'
+      - db_data:/var/lib/mysql
+    restart: always
 
   backend:
     build: ./Backend
@@ -21,11 +19,16 @@ services:
       - '3000:3000'
     depends_on:
       - database
+    environment:
+      DB_HOST: database
+    restart: always
 
   frontend:
-    container_name: frontend
     build: ./Frontend
+    container_name: frontend
     ports:
-      - '5173:5173'
-    depends_on:
-      - backend
+      - '80:80'
+    restart: always
+
+volumes:
+  db_data:
