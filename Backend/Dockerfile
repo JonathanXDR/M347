@@ -1,14 +1,14 @@
 # Use an official Node.js runtime as a parent image
-FROM node:latest
+FROM node:18.16.0
 
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install any needed packages
+RUN npm ci
 
 # Copy the rest of the application code to the container
 COPY . .
