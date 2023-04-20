@@ -1,0 +1,34 @@
+name: publish
+on: [push]
+jobs:
+  publish-frontend-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push the frontend Docker image
+        run: |
+          cd frontend
+          docker build . --tag ghcr.io/JonathanXDR/todo-frontend:latest
+          docker push ghcr.io/JonathanXDR/todo-frontend:latest
+
+  publish-backend-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push the backend Docker image
+        run: |
+          cd backend
+          docker build . --tag ghcr.io/JonathanXDR/todo-backend:latest
+          docker push ghcr.io/JonathanXDR/todo-backend:latest
