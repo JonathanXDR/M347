@@ -1,24 +1,24 @@
-version: "3"
+version: '3'
 name: todo
 services:
   database:
     container_name: database
-    image: mysql:8.0
+    image: mariadb:latest
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: toor
       MYSQL_DATABASE: ToDo
     ports:
-      - "3307:3306"
+      - '3307:3306'
     volumes:
-      - "./Database/create.sql:/docker-entrypoint-initdb.d/1.sql"
+      - './Database/ToDo.sql:/docker-entrypoint-initdb.d/1.sql'
 
   backend:
     build: ./Backend
     container_name: backend
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - database
     environment:
@@ -31,7 +31,7 @@ services:
     build: ./Frontend
     container_name: frontend
     ports:
-      - "8080:8080"
+      - '8080:8080'
     depends_on:
       - backend
 
