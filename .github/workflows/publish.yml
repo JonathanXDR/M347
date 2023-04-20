@@ -13,7 +13,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push the frontend Docker image
         run: |
-          cd frontend
+          cd Frontend
           docker build . --tag ghcr.io/JonathanXDR/todo-frontend:latest
           docker push ghcr.io/JonathanXDR/todo-frontend:latest
 
@@ -29,6 +29,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push the backend Docker image
         run: |
-          cd backend
+          cd Backend
           docker build . --tag ghcr.io/JonathanXDR/todo-backend:latest
           docker push ghcr.io/JonathanXDR/todo-backend:latest
