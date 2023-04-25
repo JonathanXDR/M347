@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: <your-backend-image-from-dockerhub>
+          image: ghcr.io/jonathanxdr/todo-backend:latest
           ports:
             - containerPort: 3000
           envFrom:
