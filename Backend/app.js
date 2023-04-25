@@ -2,11 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
-console.log(process.env.DB_HOST,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  process.env.DB_NAME);
-
 setTimeout(() => {
   // create database connection
   const db = mysql.createConnection({
