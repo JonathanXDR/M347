@@ -3,5 +3,4 @@ kind: ConfigMap
 metadata:
   name: mariadb-config
 data:
-  MARIADB_HOST: 'mariadb-service'
-  MARIADB_PORT: '3306'
+  mariadb-url: mariadb-service
