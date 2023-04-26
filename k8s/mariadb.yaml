@@ -15,13 +15,20 @@ spec:
       containers:
         - name: mariadb
           image: mariadb:latest
-          envFrom:
-            - configMapRef:
-                name: mariadb-config
-            - secretRef:
-                name: mariadb-secret
           ports:
             - containerPort: 3306
+          env:
+            - name: MARIADB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: mariadb-user
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: mariadb-password
+
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mariadb-data

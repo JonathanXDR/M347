@@ -3,6 +3,13 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 setTimeout(() => {
+  console.log(
+    'DB_HOST: ' + process.env.DB_HOST,
+    'DB_USER: ' + process.env.DB_USER,
+    'DB_PASSWORD: ' + process.env.DB_PASSWORD,
+    'DB_NAME: ' + process.env.DB_NAME
+  );
+
   // create database connection
   const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -36,7 +43,8 @@ setTimeout(() => {
 
   app.get('/tasks/:id', (req, res) => {
     db.query(
-      'SELECT * FROM Tasks WHERE id = ?', [req.params.id],
+      'SELECT * FROM Tasks WHERE id = ?',
+      [req.params.id],
       (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
@@ -57,7 +65,8 @@ setTimeout(() => {
 
   app.get('/categories/:id', (req, res) => {
     db.query(
-      'SELECT * FROM Categories WHERE id = ?', [req.params.id],
+      'SELECT * FROM Categories WHERE id = ?',
+      [req.params.id],
       (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
@@ -71,7 +80,8 @@ setTimeout(() => {
 
   app.get('/categories/:id/tasks', (req, res) => {
     db.query(
-      'SELECT id, title, description, done FROM Tasks WHERE category_id = ?', [req.params.id],
+      'SELECT id, title, description, done FROM Tasks WHERE category_id = ?',
+      [req.params.id],
       (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
@@ -86,5 +96,4 @@ setTimeout(() => {
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });
-
 }, 10000);

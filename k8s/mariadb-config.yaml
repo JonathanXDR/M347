@@ -4,3 +4,4 @@ metadata:
   name: mariadb-config
 data:
   mariadb-url: mariadb-service
+  mariadb-name: ToDo

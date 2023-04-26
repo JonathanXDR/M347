@@ -17,11 +17,27 @@ spec:
           image: ghcr.io/jonathanxdr/todo-backend:latest
           ports:
             - containerPort: 3000
-          envFrom:
-            - configMapRef:
-                name: mariadb-config
-            - secretRef:
-                name: mariadb-secret
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mariadb-config
+                  key: mariadb-url
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: mariadb-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: mariadb-password
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mariadb-config
+                  key: mariadb-name
 ---
 apiVersion: v1
 kind: Service
@@ -34,3 +50,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
+      nodePort: 30100
