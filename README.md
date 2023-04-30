@@ -169,7 +169,6 @@ The application uses the following environment variables:
 
 ```bash
 DB_HOST # The hostname of the MariaDB database server.
-DB_PORT # The port number to use for the connection to the MariaDB database server.
 DB_USER # The username to use for connecting to the MariaDB database.
 DB_PASSWORD # The password to use for connecting to the MariaDB database.
 DB_NAME # The name of the MariaDB database to use.
