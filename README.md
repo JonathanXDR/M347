@@ -10,12 +10,11 @@ Welcome to M347-Portfolio, a ToDo application built using Docker and Kubernetes.
   - [Getting Started](#getting-started)
   - [Using Docker](#using-docker)
     - [Build Images](#build-images)
-    - [Run Containers](#run-containers)
-    - [Manage Containers using Docker Compose](#manage-containers-using-docker-compose)
-    - [Debugging Docker](#debugging-docker)
+    - [Manage Containers (Docker Compose)](#manage-containers-docker-compose)
+    - [Debugging](#debugging)
   - [Using Kubernetes](#using-kubernetes)
-    - [Manage Kubernetes Resources](#manage-kubernetes-resources)
-    - [Debugging Kubernetes](#debugging-kubernetes)
+    - [Manage Resources](#manage-resources)
+    - [Debugging](#debugging-1)
   - [Additional Information](#additional-information)
     - [Environment Variables](#environment-variables)
     - [GitHub Actions](#github-actions)
@@ -40,16 +39,7 @@ Normally, the Docker images for the frontend and backend are built using [GitHub
 docker build -t <frontend or backend> ./<Frontend or Backend>
 ```
 
-### Run Containers
-
-To run the application using Docker, you can use the following commands. This will pull the latest Images from the GitHub Container Registry if the images are not already present on your local machine. Then it will run the containers in the background and expose the frontend on port 8080 and the backend on port 3000.
-
-```bash
-docker run -d -p 8080:8080 --name frontend ghcr.io/jonathanxdr/todo-frontend:latest
-docker run -d -p 3000:3000 --name backend ghcr.io/jonathanxdr/todo-backend:latest
-```
-
-### Manage Containers using Docker Compose
+### Manage Containers (Docker Compose)
 
 For running the application locally quickly, you can use Docker Compose. This will create & run the Docker containers for the frontend, backend, and MariaDB database. To start the application, run the following command:
 
@@ -63,7 +53,7 @@ To stop the application, run the following command:
 docker-compose down
 ```
 
-### Debugging Docker
+### Debugging
 
 Here are some useful docker commands for debugging:
 
@@ -113,7 +103,7 @@ To stop Minikube again, run:
 minikube stop
 ```
 
-### Manage Kubernetes Resources
+### Manage Resources
 
 After the Kubernetes cluster was created, you can apply the Kubernetes resources for the application using the following commands. Make sure to run them in the given order:
 
@@ -128,7 +118,7 @@ kubectl apply -f k8s/ingress.yaml
 
 For updating individual resources, you can simply run the `kubectl apply` command as above again. To delete the Kubernetes resources, use the `delete` keyword instead of `apply`:
 
-### Debugging Kubernetes
+### Debugging
 
 Here are some useful kubectl commands for debugging:
 
