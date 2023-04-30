@@ -17,7 +17,9 @@ Welcome to M347-Portfolio, a ToDo application built using Docker and Kubernetes.
     - [Accessing the Application](#accessing-the-application)
     - [Delete Kubernetes Resources](#delete-kubernetes-resources)
     - [Debugging Kubernetes](#debugging-kubernetes)
-  - [Environment Variables](#environment-variables)
+  - [Additional Information](#additional-information)
+    - [Environment Variables](#environment-variables)
+    - [GitHub Actions](#github-actions)
 
 ## Prerequisites
 
@@ -142,7 +144,9 @@ To debug the application using Kubernetes, you can use the following commands:
 - `kubectl exec -it <pod-name> -- mysql -u root -p toor` - Open a shell in the MariaDB pod and connect to the database.
 - `kubectl logs <pod-name> -c <container-name> --previous ` - View the logs of a previous container in a pod.
 
-## Environment Variables
+## Additional Information
+
+### Environment Variables
 
 The application uses the following environment variables:
 
@@ -151,7 +155,18 @@ The application uses the following environment variables:
 - `DB_USER` - The username to use for connecting to the MariaDB database.
 - `DB_PASSWORD` - The password to use for connecting to the MariaDB database.
 - `DB_NAME` - The name of the MariaDB database to use.
-- `BACKEND_PORT` - The port number on which the backend service listens.
-- `FRONTEND_PORT` - The port number on which the frontend service listens.
 
 These environment variables can be set in the respective Docker and Kubernetes configuration files.
+
+### GitHub Actions
+
+`publish.yml`, is responsible for building and publishing Docker images for the frontend and backend components of the application. The action is triggered on each push to the repository.
+
+The `publish.yml` file is composed of two jobs: `publish-frontend-image` and `publish-backend-image`. Both jobs have similar steps:
+
+1. Check out the repository using the `actions/checkout@v2` action.
+2. Log in to the GitHub Container Registry using the `docker/login-action@v1` action, with the `GHCR_PAT` secret for authentication.
+3. Build the Docker image for either the frontend or backend, tagging it with the appropriate path in the GitHub Container Registry (e.g., `ghcr.io/jonathanxdr/todo-frontend:latest` or `ghcr.io/jonathanxdr/todo-backend:latest`).
+4. Push the built image to the GitHub Container Registry.
+
+This GitHub Action allows for automated building and publishing of the Docker images, ensuring that the latest versions are always available in the GitHub Container Registry.
