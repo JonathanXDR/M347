@@ -9,13 +9,12 @@ Welcome to M347-Portfolio, a ToDo application built using Docker and Kubernetes.
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
   - [Using Docker](#using-docker)
-    - [Build Docker Images](#build-docker-images)
-    - [Run with Docker Compose](#run-with-docker-compose)
+    - [Build Images](#build-images)
+    - [Run Containers](#run-containers)
+    - [Manage Containers using Docker Compose](#manage-containers-using-docker-compose)
     - [Debugging Docker](#debugging-docker)
   - [Using Kubernetes](#using-kubernetes)
-    - [Create Kubernetes Resources](#create-kubernetes-resources)
-    - [Accessing the Application](#accessing-the-application)
-    - [Delete Kubernetes Resources](#delete-kubernetes-resources)
+    - [Manage Kubernetes Resources](#manage-kubernetes-resources)
     - [Debugging Kubernetes](#debugging-kubernetes)
   - [Additional Information](#additional-information)
     - [Environment Variables](#environment-variables)
@@ -25,29 +24,34 @@ Welcome to M347-Portfolio, a ToDo application built using Docker and Kubernetes.
 
 Before you begin, ensure you have the following tools & services installed on your local machine:
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [Kubernetes (Kubectl)](https://kubernetes.io/docs/tasks/tools/)
-- [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- [Docker](https://docs.docker.com/get-docker/) - Used for running and building the application.
+- [Kubernetes (Kubectl)](https://kubernetes.io/docs/tasks/tools/) - Used for managing the application in a Kubernetes cluster (Local or Cloud).
+- [Minikube](https://minikube.sigs.k8s.io/docs/start/) - Used for running a local Kubernetes cluster.
 
 ## Getting Started
 
 ## Using Docker
 
-### Build Docker Images
+### Build Images
 
-Build the Docker image only for the frontend using the following command:
-
-```bash
-docker build -t frontend ./Frontend
-```
-
-Build the Docker image only for the backend using the following command:
+Normally, the Docker images for the frontend and backend are built using [GitHub Actions](#github-actions), when pushing a commit to the `main` branch. However, you can also build the Docker images locally using the following commands:
 
 ```bash
-docker build -t backend ./Backend
+docker build -t <frontend or backend> ./<Frontend or Backend>
 ```
 
-### Run with Docker Compose
+### Run Containers
+
+To run the application using Docker, you can use the following commands. This will pull the latest Images from the GitHub Container Registry if the images are not already present on your local machine. Then it will run the containers in the background and expose the frontend on port 8080 and the backend on port 3000.
+
+```bash
+docker run -d -p 8080:8080 --name frontend ghcr.io/jonathanxdr/todo-frontend:latest
+docker run -d -p 3000:3000 --name backend ghcr.io/jonathanxdr/todo-backend:latest
+```
+
+### Manage Containers using Docker Compose
+
+For running the application locally quickly, you can use Docker Compose. This will create & run the Docker containers for the frontend, backend, and MariaDB database. To start the application, run the following command:
 
 ```bash
 docker-compose up -d
@@ -61,88 +65,111 @@ docker-compose down
 
 ### Debugging Docker
 
-To debug the application using Docker, you can use the following commands:
+Here are some useful docker commands for debugging:
 
-- `docker ps` - List all running containers.
-- `docker logs <container-id>` - View the logs of a container.
-- `docker exec -it <container-id> /bin/bash` - Open a shell in a container.
-- `docker inspect <container-id>` - View the details of a container.
+```bash
+# 1. List all running containers, including their IDs, names, and statuses.
+docker ps
+
+# 2. Show the logs of a specific container, which can help you find error messages or trace the application's execution.
+docker logs <container-id/name>
+
+# 3. Execute a command inside a running container, such as running a shell (`/bin/bash` or `/bin/sh`) to investigate the container's file system and processes.
+docker exec -it <container-id/name> <command>
+
+# 4. Provide detailed information about a container, including its configuration, network settings, and mounted volumes.
+docker inspect <container-id/name>
+
+# 5. Display real-time performance statistics for all running containers, including CPU usage, memory consumption, and network I/O.
+docker stats
+
+# 6. Show the running processes inside a container, similar to the `top` command on Linux.
+docker top <container-id/name>
+
+# 7. List the file system changes made in a container compared to the base image.
+docker diff <container-id/name>
+
+# 8. Copy files or directories between a container and the local file system, which can be helpful for examining application data or configuration files.
+docker cp <container-id/name>:<path/to/source> <path/to/destination>
+
+# 9. If you are using Docker Compose, show the logs for all services defined in the `docker-compose.yml` file.
+docker-compose logs
+
+#10. Tear down the current services and rebuild the containers from scratch if you've made changes to your application's code or dependencies.
+docker-compose down && docker-compose up --build
+```
 
 ## Using Kubernetes
 
-### Create Kubernetes Resources
-
-1. Create a ConfigMap for filling in the db data:
+For running the application locally, you can use Minikube. This will create the Kubernetes cluster. To start Minikube, run the following command:
 
 ```bash
-kubectl create configmap todo-db-init --from-file=./Database/ToDo.sql
+minikube start
 ```
 
-2. Apply the MariaDB configuration, secret, and deployment files:
+To stop Minikube again, run:
+
+```bash
+minikube stop
+```
+
+### Manage Kubernetes Resources
+
+After the Kubernetes cluster was created, you can apply the Kubernetes resources for the application using the following commands. Make sure to run them in the given order:
 
 ```bash
 kubectl apply -f k8s/mariadb-config.yaml
 kubectl apply -f k8s/mariadb-secret.yaml
 kubectl apply -f k8s/mariadb.yaml
-```
-
-3. Apply the backend deployment and service files:
-
-```bash
 kubectl apply -f k8s/backend.yaml
-```
-
-4. Apply the frontend deployment and service files:
-
-```bash
 kubectl apply -f k8s/frontend.yaml
-```
-
-5. (Optional) Apply the ingress configuration:
-
-```bash
 kubectl apply -f k8s/ingress.yaml
 ```
 
-### Accessing the Application
-
-1. Retrieve the external IP of the frontend service:
-
-```bash
-kubectl get services
-```
-
-2. Access the frontend by visiting the external IP (found in the previous step) in your browser.
-
-### Delete Kubernetes Resources
-
-1. To delete the Kubernetes resources created earlier, run the following commands:
-
-```bash
-kubectl delete -f k8s/mariadb-config.yaml
-kubectl delete -f k8s/mariadb-secret.yaml
-kubectl delete -f k8s/mariadb.yaml
-kubectl delete -f k8s/backend.yaml
-kubectl delete -f k8s/frontend.yaml
-```
-
-2. (Optional) Delete the ingress configuration:
-
-```bash
-kubectl delete -f k8s/ingress.yaml
-```
+For updating individual resources, you can simply run the `kubectl apply` command as above again. To delete the Kubernetes resources, use the `delete` keyword instead of `apply`:
 
 ### Debugging Kubernetes
 
-To debug the application using Kubernetes, you can use the following commands:
+Here are some useful kubectl commands for debugging:
 
-- `kubectl get pods` - List all pods.
-- `kubectl logs <pod-name>` - View the logs of a pod.
-- `kubectl exec -it <pod-name> -- /bin/bash` - Open a shell in a pod.
-- `kubectl describe <resource-type> <resource-name>` - View the details of a resource.
-- `kubectl delete <resource-type> <resource-name>` - Delete a resource.
-- `kubectl exec -it <pod-name> -- mysql -u root -p toor` - Open a shell in the MariaDB pod and connect to the database.
-- `kubectl logs <pod-name> -c <container-name> --previous ` - View the logs of a previous container in a pod.
+```bash
+# 1. Get information about all resources in the cluster (e.g., pods, services, deployments)
+kubectl get <resource-type>
+
+# 2. Describe a specific resource in detail
+kubectl describe <resource-type> <resource-name>
+
+# 3. Get logs from a specific pod
+kubectl logs <pod-name>
+
+# 4. Stream logs from a specific pod in real-time
+kubectl logs -f <pod-name>
+
+# 5. Get the current state of a Kubernetes configuration
+kubectl config view
+
+# 6. Switch between different Kubernetes contexts
+kubectl config use-context <context-name>
+
+# 7. Execute a command within a specific pod
+kubectl exec -it <pod-name> -- <command>
+
+# 8. Get the current status of a specific deployment
+kubectl rollout status deployment/<deployment-name>
+
+# 9. Display the history of a specific deployment
+kubectl rollout history deployment/<deployment-name>
+
+# 10. Get resource usage information for each pod in the namespace
+kubectl top pod
+
+# 11. Get resource usage information for each node in the cluster
+kubectl top node
+
+# 12. Debug issues with ingress by displaying ingress resources
+kubectl get ingress
+
+```
 
 ## Additional Information
 
