@@ -167,11 +167,13 @@ kubectl get ingress
 
 The application uses the following environment variables:
 
-- `DB_HOST` - The hostname of the MariaDB database server.
-- `DB_PORT` - The port number to use for the connection to the MariaDB database server.
-- `DB_USER` - The username to use for connecting to the MariaDB database.
-- `DB_PASSWORD` - The password to use for connecting to the MariaDB database.
-- `DB_NAME` - The name of the MariaDB database to use.
+```bash
+DB_HOST # The hostname of the MariaDB database server.
+DB_PORT # The port number to use for the connection to the MariaDB database server.
+DB_USER # The username to use for connecting to the MariaDB database.
+DB_PASSWORD # The password to use for connecting to the MariaDB database.
+DB_NAME # The name of the MariaDB database to use.
+```
 
 These environment variables can be set in the respective Docker and Kubernetes configuration files.
 
