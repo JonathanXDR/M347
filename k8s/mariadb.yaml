@@ -28,14 +28,13 @@ spec:
                 secretKeyRef:
                   name: mariadb-secret
                   key: mariadb-password
-
           volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mariadb-data
+            - name: todo-db-init
+              mountPath: /docker-entrypoint-initdb.d
       volumes:
-        - name: mariadb-data
-          persistentVolumeClaim:
-            claimName: mariadb-pvc
+        - name: todo-db-init
+          configMap:
+            name: todo-db-init
 ---
 apiVersion: v1
 kind: Service
@@ -48,27 +47,3 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: mariadb-pv
-spec:
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: '/mnt/data/mariadb'
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mariadb-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
