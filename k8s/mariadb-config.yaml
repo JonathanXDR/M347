@@ -9,7 +9,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: todo-db-init
+  name: mariadb-init
 data:
   ToDo.sql: |
     Drop database if exists ToDo;

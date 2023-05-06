@@ -29,12 +29,17 @@ spec:
                   name: mariadb-secret
                   key: mariadb-password
           volumeMounts:
-            - name: todo-db-init
+            - name: mariadb-init
               mountPath: /docker-entrypoint-initdb.d
+            - name: mariadb-data
+              mountPath: /var/lib/mysql
       volumes:
-        - name: todo-db-init
+        - name: mariadb-init
           configMap:
-            name: todo-db-init
+            name: mariadb-init
+        - name: mariadb-data
+          persistentVolumeClaim:
+            claimName: mariadb-pvc
 ---
 apiVersion: v1
 kind: Service
