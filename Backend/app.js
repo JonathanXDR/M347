@@ -11,7 +11,6 @@ setTimeout(() => {
     database: process.env.DB_NAME,
   });
 
-  // connect to database
   db.connect((err) => {
     if (err) throw err;
     console.log('Connected to database');
@@ -19,14 +18,15 @@ setTimeout(() => {
 
   const app = express();
   const port = 3000;
+  const apiRouter = express.Router();
 
   app.use(bodyParser.json());
+  app.use('/api', apiRouter);
 
-  app.get('/', (req, res) => {
+  apiRouter.get('/', (req, res) => {
     res.send('Hello World!');
   });
 
-  // HTTP endpoint to get all users from the database
   app.get('/tasks', (req, res) => {
     db.query('SELECT * FROM Tasks', (err, result) => {
       if (err) throw err;
