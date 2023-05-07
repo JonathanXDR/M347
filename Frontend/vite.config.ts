@@ -12,9 +12,11 @@ export default defineConfig({
     }
   },
   server: {
-    port: 5173
-  },
-  build: {
-    chunkSizeWarningLimit: 1600
+    proxy: {
+      '/api': {
+        target: 'http://172.20.10.5',
+        changeOrigin: true
+      }
+    }
   }
 })
