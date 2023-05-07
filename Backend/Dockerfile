@@ -5,7 +5,7 @@ FROM node:18.16.0
 LABEL org.opencontainers.image.source https://github.com/JonathanXDR/M347-Portfolio
 
 # Install the wait tool
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+ADD https://github.com/ufoscout/docker-compose-wait/releases/latest/download/wait /wait
 
 # Make the wait tool executable
 RUN chmod +x /wait
