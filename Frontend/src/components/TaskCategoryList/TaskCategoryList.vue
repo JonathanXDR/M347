@@ -10,8 +10,6 @@ import UnderlineNav from '../UnderlineNav/UnderlineNav';
     <h4 class="pt-4 pb-3 color-fg-muted">Today's Tasks</h4>
     <UnderlineNav />
     <TaskItem />
-
-    <BoxOverlay />
   </div>
 </template>
 

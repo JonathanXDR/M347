@@ -4,17 +4,17 @@ FROM node:18.16.0
 # Assign the Image to a repository
 LABEL org.opencontainers.image.source https://github.com/JonathanXDR/M347-Portfolio
 
-# Install the wait tool
-ADD https://github.com/ufoscout/docker-compose-wait/releases/latest/download/wait /wait
-
-# Make the wait tool executable
-RUN chmod +x /wait
-
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+
+# Install the wait tool
+ADD https://github.com/ufoscout/docker-compose-wait/releases/latest/download/wait /wait
+
+# Make the wait tool executable
+RUN chmod +x /wait
 
 # Install any needed packages
 RUN npm ci
