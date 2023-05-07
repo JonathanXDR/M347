@@ -4,6 +4,12 @@ FROM node:18.16.0
 # Assign the Image to a repository
 LABEL org.opencontainers.image.source https://github.com/JonathanXDR/M347-Portfolio
 
+# Install the wait tool
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+
+# Make the wait tool executable
+RUN chmod +x /wait
+
 # Set the working directory to /app
 WORKDIR /app
 
@@ -19,5 +25,5 @@ COPY . .
 # Expose the port that the app will listen on
 EXPOSE 3000
 
-# Define the command to start the app
-CMD [ "npm", "run", "start" ]
+## Launch the wait tool and then your application
+CMD /wait && npm run start
