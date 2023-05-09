@@ -1,0 +1,32 @@
+name: deploy
+on:
+  workflow_run:
+    workflows: ['publish']
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.5.2
+
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Test SSH connectivity
+        run: ssh -o StrictHostKeyChecking=no -T git@github.com || true
+
+      - name: Update Kubernetes Resources
+        run: |
+          ssh ubuntu@${{ secrets.LERNMAAS_IP }}
+          cd ~/M347-Portfolio/k8s
+          kubectl apply -f k8s/mariadb-config.yaml
+          kubectl apply -f k8s/mariadb-secret.yaml
+          kubectl apply -f k8s/mariadb-pvc.yaml
+          kubectl apply -f k8s/mariadb.yaml
+          kubectl apply -f k8s/backend.yaml
+          kubectl apply -f k8s/frontend.yaml
+          kubectl apply -f k8s/ingress.yaml
