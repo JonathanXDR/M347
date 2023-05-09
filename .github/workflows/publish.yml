@@ -1,5 +1,7 @@
 name: publish
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 jobs:
   publish-frontend-image:
     runs-on: ubuntu-latest
