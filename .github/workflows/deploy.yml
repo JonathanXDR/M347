@@ -21,12 +21,12 @@ jobs:
 
       - name: Update Kubernetes Resources
         run: |
-          ssh -tt ubuntu@${{ secrets.LERNMAAS_IP }}
-          cd ~/M347-Portfolio/k8s
-          kubectl apply -f mariadb-config.yaml
-          kubectl apply -f mariadb-secret.yaml
-          kubectl apply -f mariadb-pvc.yaml
-          kubectl apply -f mariadb.yaml
-          kubectl apply -f backend.yaml
-          kubectl apply -f frontend.yaml
-          kubectl apply -f ingress.yaml
+          ssh "ubuntu@${{ secrets.LERNMAAS_IP }}" '
+          cd ~/M347-Portfolio/k8s && 
+          kubectl apply -f mariadb-config.yaml && 
+          kubectl apply -f mariadb-secret.yaml && 
+          kubectl apply -f mariadb-pvc.yaml && 
+          kubectl apply -f mariadb.yaml && 
+          kubectl apply -f backend.yaml && 
+          kubectl apply -f frontend.yaml && 
+          kubectl apply -f ingress.yaml'
