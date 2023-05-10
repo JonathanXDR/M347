@@ -11,22 +11,32 @@ jobs:
     steps:
       - uses: actions/checkout@v3.5.2
 
-      - name: Install SSH Key
-        uses: webfactory/ssh-agent@v0.8.0
+      - name: Set up WireGuard
+        uses: egor-tensin/setup-wireguard@v1.2.0
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          endpoint: '${{ secrets.WIREGUARD_ENDPOINT }}'
+          endpoint_public_key: '${{ secrets.WIREGUARD_ENDPOINT_PUBLIC_KEY }}'
+          ips: '${{ secrets.WIREGUARD_IPS }}'
+          allowed_ips: '${{ secrets.WIREGUARD_ALLOWED_IPS }}'
+          private_key: '${{ secrets.WIREGUARD_PRIVATE_KEY }}'
+          # preshared_key: '${{ secrets.WIREGUARD_PRESHARED_KEY }}'
 
-      - name: Test SSH connectivity
-        run: ssh -o StrictHostKeyChecking=no -T git@github.com || true
-
-      - name: Update Kubernetes Resources
-        run: |
-          ssh "ubuntu@${{ secrets.LERNMAAS_IP }}" '
-          cd ~/M347-Portfolio/k8s && 
-          kubectl apply -f mariadb-config.yaml && 
-          kubectl apply -f mariadb-secret.yaml && 
-          kubectl apply -f mariadb-pvc.yaml && 
-          kubectl apply -f mariadb.yaml && 
-          kubectl apply -f backend.yaml && 
-          kubectl apply -f frontend.yaml && 
-          kubectl apply -f ingress.yaml'
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.LERNMAAS_IP }}
+          username: ${{ secrets.LERNMAAS_USERNAME }}
+          key: ${{ secrets.LERNMAAS_PRIVATE_KEY }}
+          script: |
+            if [ -d M347-Portfolio ]; then
+              cd M347-Portfolio && git pull
+            else
+              git clone https://github.com/JonathanXDR/M347-Portfolio.git
+            fi
+            cd ~/M347-Portfolio/k8s && 
+            kubectl apply -f mariadb-config.yaml && 
+            kubectl apply -f mariadb-secret.yaml && 
+            kubectl apply -f mariadb.yaml && 
+            kubectl apply -f backend.yaml && 
+            kubectl apply -f frontend.yaml && 
+            kubectl apply -f ingress.yaml
