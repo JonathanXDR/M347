@@ -105,20 +105,13 @@ minikube stop
 
 ### Manage Resources
 
-After the Kubernetes cluster was created, you can apply the Kubernetes resources for the application using the following commands. Make sure to run them in the given order:
+After the Kubernetes cluster was created, you can apply the Kubernetes resources for the application using the following commands.
 
 ```bash
-kubectl apply -f k8s/mariadb-config.yaml
-kubectl apply -f k8s/mariadb-secret.yaml
-kubectl apply -f k8s/mariadb-pv.yaml
-kubectl apply -f k8s/mariadb-pvc.yaml
-kubectl apply -f k8s/mariadb.yaml
-kubectl apply -f k8s/backend.yaml
-kubectl apply -f k8s/frontend.yaml
-kubectl apply -f k8s/ingress.yaml
+kubectl apply -f .
 ```
 
-For updating individual resources, you can simply run the `kubectl apply` command as above again. To delete the Kubernetes resources, use the `delete` keyword instead of `apply`:
+To delete the Kubernetes resources, use the `delete` keyword instead of `apply`.
 
 ### Debugging
 

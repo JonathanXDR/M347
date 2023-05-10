@@ -32,12 +32,6 @@ jobs:
             else
               git clone https://github.com/JonathanXDR/M347-Portfolio.git
             fi
-            cd ~/M347-Portfolio/k8s && 
-            kubectl apply -f mariadb-config.yaml &&
-            kubectl apply -f mariadb-secret.yaml &&
-            kubectl apply -f mariadb-pv.yaml &&
-            kubectl apply -f mariadb-pvc.yaml &&
-            kubectl apply -f mariadb.yaml &&
-            kubectl apply -f backend.yaml &&
-            kubectl apply -f frontend.yaml &&
-            kubectl apply -f ingress.yaml &&
+            cd ~/M347-Portfolio/k8s &&
+            kubectl delete -f . &&
+            kubectl apply -f .
