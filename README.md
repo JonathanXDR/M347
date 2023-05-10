@@ -110,6 +110,7 @@ After the Kubernetes cluster was created, you can apply the Kubernetes resources
 ```bash
 kubectl apply -f k8s/mariadb-config.yaml
 kubectl apply -f k8s/mariadb-secret.yaml
+kubectl apply -f k8s/mariadb-pv.yaml
 kubectl apply -f k8s/mariadb-pvc.yaml
 kubectl apply -f k8s/mariadb.yaml
 kubectl apply -f k8s/backend.yaml
