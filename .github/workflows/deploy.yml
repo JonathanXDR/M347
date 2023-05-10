@@ -19,7 +19,6 @@ jobs:
           ips: '${{ secrets.WIREGUARD_IPS }}'
           allowed_ips: '${{ secrets.WIREGUARD_ALLOWED_IPS }}'
           private_key: '${{ secrets.WIREGUARD_PRIVATE_KEY }}'
-          # preshared_key: '${{ secrets.WIREGUARD_PRESHARED_KEY }}'
 
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v0.1.10
