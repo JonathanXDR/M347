@@ -12,7 +12,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - './Database/ToDo.sql:/docker-entrypoint-initdb.d/1.sql'
+      - './Database/init.sql:/docker-entrypoint-initdb.d/1.sql'
 
   backend:
     build: ./Backend
