@@ -5,7 +5,7 @@
         class="Box-row d-flex flex-items-center no-underline color-fg-default"
         :to="`/task/${task.id}`"
       >
-        <input type="checkbox" class="mr-3" :checked="task.completed" />
+        <input type="checkbox" class="mr-3" :checked="!task.done" />
         <div class="flex-auto">
           <strong>{{ task.title }}</strong>
           <div class="text-small color-fg-subtle">{{ task.description }}</div>

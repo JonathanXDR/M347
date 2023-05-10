@@ -1,5 +1,3 @@
-import UnderlineNav from '../UnderlineNav/UnderlineNav';
-
 <template>
   <div class="col-12 d-flex flex-column p-3 p-md-6">
     <h1 class="pb-4">What's up, Jonathan!</h1>

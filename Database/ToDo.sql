@@ -3,24 +3,24 @@ CREATE DATABASE IF NOT EXISTS `ToDo`;
 use ToDo;
 CREATE TABLE IF NOT EXISTS `ToDo`.`Categories` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(45) NOT NULL,
+    `title` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`id`)
 );
 CREATE TABLE IF NOT EXISTS `ToDo`.`Tasks` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(45) NOT NULL,
     `description` VARCHAR(45) NOT NULL,
-    `done` TINYINT NOT NULL,
-    `Category_id` INT NOT NULL REFERENCES `ToDo`.`Categories`(id),
+    `done` BIT NOT NULL,
+    `category_id` INT NOT NULL REFERENCES `ToDo`.`Categories`(id),
     PRIMARY KEY (`id`)
 );
-INSERT INTO `ToDo`.`Categories` (`id`, `name`)
+INSERT INTO `ToDo`.`Categories` (`id`, `title`)
 VALUES (1, 'Category 1'),
     (2, 'Category 2'),
     (3, 'Category 3'),
     (4, 'Category 4'),
     (5, 'Category 5');
-INSERT INTO `ToDo`.`Tasks` (`title`, `description`, `done`, `Category_id`)
+INSERT INTO `ToDo`.`Tasks` (`title`, `description`, `done`, `category_id`)
 VALUES ('Task 1', 'Description 1', 0, 1),
     ('Task 2', 'Description 2', 0, 2),
     ('Task 3', 'Description 3', 0, 3),

@@ -1,6 +1,10 @@
 <template>
   <ul class="d-flex flex-wrap">
-    <li class="col-sm-3 col-md-4 mr-4 mb-4" v-for="(category, index) in categories" :key="index">
+    <li
+      class="col-sm-5 col-md-3 mr-sm-3 mr-md-4 mb-sm-3 mb-md-4"
+      v-for="(category, index) in categories"
+      :key="index"
+    >
       <router-link
         class="d-flex flex-column flex-justify-between d-block color-shadow-medium px-3 pt-4 pb-6 rounded-3 overflow-hidden no-underline"
         :to="`/category/${category.id}`"

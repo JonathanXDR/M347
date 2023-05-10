@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const cors = require('cors');
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -20,6 +21,7 @@ const apiRouter = express.Router();
 
 app.use(bodyParser.json());
 app.use('/api', apiRouter);
+app.use(cors());
 
 apiRouter.get('/', (req, res) => {
   res.send('Hello World!');
