@@ -1,7 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mysql = require('mysql');
-const cors = require('cors');
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -19,9 +17,14 @@ const app = express();
 const port = 3000;
 const apiRouter = express.Router();
 
-app.use(bodyParser.json());
+app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.use('/api', apiRouter);
-app.use(cors());
 
 apiRouter.get('/', (req, res) => {
   res.send('Hello World!');
