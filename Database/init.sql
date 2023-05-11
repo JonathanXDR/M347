@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `ToDo`.`Tasks` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(45) NOT NULL,
     `description` VARCHAR(45) NOT NULL,
-    `done` BIT NOT NULL,
+    `done` TINYINT NOT NULL,
     `category_id` INT NOT NULL REFERENCES `ToDo`.`Categories`(id),
     PRIMARY KEY (`id`)
 );
