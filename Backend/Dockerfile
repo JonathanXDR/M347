@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18.16.0
+FROM node:18.18.2
 
 # Assign the Image to a repository
 LABEL org.opencontainers.image.source https://github.com/JonathanXDR/M347-Portfolio
