@@ -12,30 +12,30 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@primer/css": "^21.0.9",
+    "@primer/css": "^21.0.10",
     "@primer/octicons": "^19.8.0",
-    "axios": "^1.6.0",
+    "axios": "^1.6.2",
     "pinia": "^2.1.7",
-    "vue": "^3.3.7",
+    "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.5.1",
-    "@tsconfig/node18": "^18.2.2",
-    "@types/node": "^20.8.9",
-    "@vitejs/plugin-vue": "^4.4.0",
+    "@rushstack/eslint-patch": "^1.6.0",
+    "@tsconfig/node21": "^21.0.0",
+    "@types/node": "^20.9.4",
+    "@vitejs/plugin-vue": "^4.5.0",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/tsconfig": "^0.4.0",
-    "eslint": "^8.52.0",
+    "eslint": "^8.54.0",
     "eslint-plugin-vue": "^9.18.1",
     "node-sass": "^9.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
-    "typescript": "~5.2.2",
-    "vite": "^4.5.0",
+    "typescript": "~5.3.2",
+    "vite": "^5.0.2",
     "vue-tsc": "^1.8.22"
   }
 }
