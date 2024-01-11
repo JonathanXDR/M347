@@ -14,7 +14,7 @@
   "dependencies": {
     "@primer/css": "^21.0.1",
     "@primer/octicons": "^18.3.0",
-    "axios": "^1.4.0",
+    "axios": "^1.6.0",
     "pinia": "^2.0.36",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
