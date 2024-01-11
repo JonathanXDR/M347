@@ -1,4 +1,4 @@
-# M347-Portfolio
+# M347
 
 Welcome to M347-Portfolio, a ToDo application built using Docker and Kubernetes. This README provides documentation on how to set up, manage, and debug the application. The application consists of a frontend, backend, and a MariaDB database.
 
